@@ -1,5 +1,14 @@
-.allthings {
-  height: 100%;
+#videos {
+  background-color: rgb(136, 136, 136);
+  width: 70%;
+}
+.groupVideo {
+  width: 23vw;
+  height: 15vw;
+  margin-top: 2em;
+  margin-right: 0.8em;
+  background: rgba(136, 136, 136);
+  border-radius: 10px;
 }
 #button-box {
   display: flex;
@@ -7,17 +16,12 @@
   background-color: #d7f0ea;
   border-radius: 8px;
   padding: 20px;
-  padding-left: 30px;
+  padding-left: 35px;
   bottom: 2em;
   left: 27em;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
-
-#videos {
-  background-color: gray;
-  width: 70%;
-}
 
 #av {
   color: #f6f6f6;
@@ -139,13 +143,6 @@
   border: none;
 }
 
-.groupVideo {
-  width: 25vw;
-  height: 15vw;
-  margin: 0.5rem;
-  background: rgb(19, 37, 64, 0.8);
-  border-radius: 5px;
-}
 .side {
   display: flex;
   width: 30%;
