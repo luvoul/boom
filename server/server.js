@@ -49,6 +49,12 @@ io.on("connection", (socket) => {
     const usersInThisRoom = users[roomID].filter((id) => id !== socket.id);
     socket.emit("all users", usersInThisRoom);
     console.log(`emit all users ${usersInThisRoom}`);
+
+    // roomId에 들어감
+    socket.join(roomID);
+    socket.on("message", (message) => {
+      socket.broadcast.emit("message", message);
+    });
   });
 
   socket.on("send userList", (username) => {
@@ -60,13 +66,6 @@ io.on("connection", (socket) => {
 
   socket.on("connect_error", (err) => {
     console.log(`connect_error due to ${err.message}`);
-  });
-
-  socket.on("send message", (item) => {
-    //send message 이벤트 발생
-    console.log(item.name + " : " + item.message);
-    io.emit("receive message", { name: item.name, message: item.message });
-    //클라이언트에 이벤트를 보냄
   });
 
   // sending signal to existing members when user join
