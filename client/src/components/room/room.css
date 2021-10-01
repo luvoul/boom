@@ -10,6 +10,17 @@
   background: rgba(136, 136, 136);
   border-radius: 10px;
 }
+.group-call {
+  display: flex;
+  margin-top: 0.3rem;
+  margin-left: 0.3em;
+  justify-content: center;
+  align-items: center;
+}
+.allthings {
+  height: 100%;
+  width: 70%;
+}
 #button-box {
   display: flex;
   position: absolute;
@@ -20,9 +31,7 @@
   bottom: 2em;
   left: 27em;
 }
-
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
-
 #av {
   color: #f6f6f6;
   background-color: #56537a;
@@ -101,17 +110,9 @@
   border: none;
 }
 
-.chatBox {
-  margin: 1rem;
-  margin-right: 3rem;
-  height: 100%;
-  background-color: #c6c8eb;
-  border-radius: 4%;
-}
-
 .text-box {
   height: 10%;
-  background-color: #8d91d8;
+  background-color: #aeb0d8;
   width: 100%;
   margin-left: 0.1rem;
 }
@@ -142,9 +143,53 @@
   background-color: #787cd1;
   border: none;
 }
-
-.side {
+#side {
+  display: fixed;
+  margin-right: 10px;
+}
+#messageChat {
+  width: 270px;
+  height: 530px;
   display: flex;
-  width: 30%;
-  flex-direction: column;
+  background-color: #d7f0ea;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 5px;
+}
+#sendBox {
+  display: flex;
+  flex: 0.1;
+}
+.others-message-wrapper {
+  max-width: 70%;
+  width: fit-content;
+  align-items: left;
+  background-color: white;
+  border-radius: 8px;
+  padding: 3px 5px;
+  margin: 5px auto 5px 5px;
+}
+.others-wrapper {
+  max-width: 70%;
+  width: fit-content;
+  align-items: left;
+  padding: 3px 5px;
+  margin: 5px auto 5px 5px;
+}
+.my-message-wrapper {
+  max-width: 70%;
+  width: fit-content;
+  text-align: right;
+  align-items: right;
+  background-color: #a2d4c9;
+  border-radius: 8px;
+  margin: 5px 5px 5px auto;
+}
+.me-wrapper {
+  max-width: 70%;
+  width: fit-content;
+  text-align: right;
+  align-items: right;
+  padding: 3px 5px;
+  margin: 5px 5px 5px auto;
 }

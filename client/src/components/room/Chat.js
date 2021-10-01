@@ -62,6 +62,7 @@ const Chat = (props) => {
     },
     [chat]
   );
+
   function UrlCopy() {
     const [copied, setCopied] = useState(false);
 
@@ -80,12 +81,12 @@ const Chat = (props) => {
 
   return (
     <div className="App">
-      <UrlCopy />
       <div className="Box">
         <ChatBox chatArr={chatArr} />
         <div className="InputBox">
           <input placeholder="내용" onChange={changeMessage}></input>
           <button onClick={buttonHandler}>등록</button>
+          <UrlCopy />
         </div>
       </div>
     </div>

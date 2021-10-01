@@ -17,6 +17,7 @@ const videoConstraints = {
 const Room = ({ match, location }) => {
   // variables for different functionalities of video call
   const [peers, setPeers] = useState([]);
+  const [chat, setChat] = useState("");
   const socketRef = useRef();
   const userVideo = useRef();
   const peersRef = useRef([]);
@@ -28,7 +29,11 @@ const Room = ({ match, location }) => {
   useEffect(() => {
     socketRef.current = io.connect("/");
 
-    socketRef.current.emit("send userList", username);
+    const chatBox = document.getElementById("chatBox");
+
+    socketRef.current.on("message", (message) => {
+      chatBox.appendChild(makeMessage(message, true));
+    });
 
     // asking for audio and video access
     navigator.mediaDevices
@@ -139,8 +144,45 @@ const Room = ({ match, location }) => {
     return peer;
   }
 
+  // 채팅 기능
+  function onClick(e) {
+    const chatBox = document.getElementById("chatBox");
+    setChat(e.target.value);
+    const message = chat;
+    socketRef.current.emit("message", message);
+    setChat("");
+    chatBox.appendChild(makeMessage(message, false));
+  }
+
+  function onKeydown(e) {
+    if (e.key === "Enter") {
+      const chatBox = document.getElementById("chatBox");
+      setChat(e.target.value);
+      const message = chat;
+      socketRef.current.emit("message", message);
+      setChat("");
+      chatBox.appendChild(makeMessage(message, false));
+    }
+  }
+
+  const onChange = (e) => {
+    setChat(e.target.value);
+  };
+
+  function makeMessage(message, isOthers) {
+    const name = document.createElement("div");
+    name.innerText = username;
+    const msgBox = document.createElement("div");
+    const classname = isOthers
+      ? "others-message-wrapper"
+      : "my-message-wrapper";
+    msgBox.className = classname;
+    msgBox.innerText = message;
+    return msgBox;
+  }
+
   return (
-    <div>
+    <div className="group-call">
       <link
         rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
@@ -168,7 +210,29 @@ const Room = ({ match, location }) => {
         </div>
         <Toggle userStream={userStream} url={location.pathname} />
       </div>
-      <div className="side"></div>
+      <div className="side">
+        <div id="messageChat">
+          <h3>채팅</h3>
+          <div id="chatBox"></div>
+          <div id="sendBox">
+            <input
+              id="textMsg"
+              type="text"
+              autocomplete="off"
+              value={chat}
+              onChange={onChange}
+              placeholder="메세지를 입력하세요"
+            />
+            <input
+              type="button"
+              id="sendBtn"
+              value="send"
+              onClick={onClick}
+              onKeyDown={onKeydown}
+            ></input>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
