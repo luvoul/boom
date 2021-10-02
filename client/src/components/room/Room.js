@@ -200,9 +200,7 @@ const Room = ({ match, location }) => {
   function messenger(userName, isOthers) {
     const messenger = document.createElement("div");
     messenger.innerText = userName;
-    const classname = isOthers
-      ? "others-message-wrapper"
-      : "my-message-wrapper";
+    const classname = isOthers ? "others-name" : "my-name";
     messenger.className = classname;
     return messenger;
   }
@@ -278,13 +276,21 @@ const Room = ({ match, location }) => {
       </div>
       <div className="side">
         <div id="userList">
-          <h3>유저 목록</h3>
-          {userNames.map((user) => {
-            return <li>{user}</li>;
-          })}
+          <div style={{ position: "sticky", top: "0px", background: "#ffff" }}>
+            <h4>유저 목록</h4>
+          </div>
+          <div id="sc">
+            {userNames.map((user) => {
+              return (
+                <ul>
+                  <li style={{ color: "#ffff" }}>{user}</li>
+                </ul>
+              );
+            })}
+          </div>
         </div>
         <div id="messageChat">
-          <h3>채팅</h3>
+          <h4>채팅</h4>
           <div id="chatBox"></div>
           <div id="sendBox">
             <input
