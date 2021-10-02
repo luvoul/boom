@@ -257,7 +257,7 @@ const Room = ({ match, location }) => {
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
         crossOrigin="anonymous"
       />
-      <div className="allthings">
+      <div>
         <div className="videos">
           <video
             className="groupVideo"
