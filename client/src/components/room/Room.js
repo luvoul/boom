@@ -215,9 +215,6 @@ const Room = ({ match, location }) => {
     navigator.mediaDevices.getDisplayMedia({ cursor: true }).then((stream) => {
       const screenTrack = stream.getTracks()[0];
 
-      for (peer in peersRef.current) {
-      }
-
       userStream.current
         .getTracks()
         .forEach((track) =>
