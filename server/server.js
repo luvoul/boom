@@ -27,9 +27,8 @@ app.use("/signup", signup); // 회원가입
 // room object to store the created room IDs
 const users = {};
 const socketToRoom = {};
-const userList = [];
-
-console.log("start");
+const userList = {};
+let userNames = [];
 
 // when the user is forming a connection with socket.io
 io.on("connection", (socket) => {
@@ -49,32 +48,36 @@ io.on("connection", (socket) => {
     const usersInThisRoom = users[roomID].filter((id) => id !== socket.id);
     socket.emit("all users", usersInThisRoom);
     console.log(`emit all users ${usersInThisRoom}`);
-
-    // roomId에 들어감
-    socket.join(roomID);
-    socket.on("message", (message) => {
-      socket.broadcast.emit("message", message);
-    });
   });
 
-  socket.on("send userList", (username) => {
-    console.log(`send userList ${username}`);
-    userList.push(username);
-    io.emit("receive users", userList);
-    console.log(`userList ${userList}`);
+  socket.on("send user name", (username) => {
+    if (users[socket.id]) {
+      userList[socket.id].push(username);
+    } else {
+      userList[socket.id] = username;
+    }
+
+    userNames = Object.values(userList);
+
+    socket.emit("send user list", userNames);
+    console.log(`userList : ${userNames}`);
   });
 
-  socket.on("connect_error", (err) => {
-    console.log(`connect_error due to ${err.message}`);
+  socket.on("message", (message) => {
+    socket.broadcast.emit("message", message, userList[socket.id]);
   });
 
   // sending signal to existing members when user join
   socket.on("sending signal", (payload) => {
     console.log("on sending signal");
-    io.to(payload.userToSignal).emit("user joined", {
-      signal: payload.signal,
-      callerID: payload.callerID,
-    });
+    io.to(payload.userToSignal).emit(
+      "user joined",
+      {
+        signal: payload.signal,
+        callerID: payload.callerID,
+      },
+      userNames
+    );
     console.log("emit user joined");
   });
 
@@ -93,7 +96,6 @@ io.on("connection", (socket) => {
     console.log("on disconnect");
     // getting the room array with all the participants
     const roomID = socketToRoom[socket.id];
-    console.log(roomID);
     let room = users[roomID];
     console.log(`room : ${room}`);
 
@@ -104,9 +106,19 @@ io.on("connection", (socket) => {
       users[roomID] = room;
     }
 
+    for (let id in userList) {
+      if (id === socket.id) {
+        const userName = userList[id];
+        const index = userNames.indexOf(userName);
+        if (index > -1) {
+          userNames.splice(index, 1);
+        }
+      }
+    }
+
     // emiting a signal and sending it to everyone that a user left
-    socket.broadcast.emit("user left", socket.id);
-    console.log(`emit user left : ${socket.id} `);
+    socket.broadcast.emit("user left", socket.id, userNames);
+    console.log(`남은 유저 :  ${userNames} `);
   });
 });
 
