@@ -5,7 +5,7 @@
   justify-content: space-between;
 }
 .group-call .videos {
-  width: 70%;
+  width: 80%;
 }
 .group-call .videos .groupVideo {
   width: 23vw;
@@ -16,8 +16,10 @@
   border-radius: 10px;
 }
 .group-call .side {
-  width: 30%;
+  width: 20%;
   border: 1px solid "gray";
+  float: right;
+  margin-top: 24px;
 }
 .group-call .side h4 {
   color: black;
