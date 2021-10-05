@@ -18,13 +18,15 @@ function my() {
         <div id="blockparent">
           <div className="block">
             <h3>BOOM 프로필</h3>
-            <div>
+            <div className="list">
               이름 <br />
               이메일
               <br />
               회사
               <br />
               부서
+              <br />
+              DID
             </div>
             <div></div>
           </div>
@@ -40,10 +42,7 @@ function my() {
           </div>
         </div>
         <div id="blockparent">
-          <div className="block">
-            <h3>DID</h3>
-          </div>
-          <div className="block">
+          <div className="block2">
             <h3>내 활동 기록 보기</h3>
             <p>업데이트 중...</p>
           </div>
