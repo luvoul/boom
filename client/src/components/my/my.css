@@ -1,28 +1,6 @@
-.myall {
-  position: relative;
-  top: 100px;
-}
-.myall .button-box {
-  display: center;
-}
-.myall .button-box .button2 {
-  background: rgb(125, 218, 196);
-  border-radius: 5px;
-  width: 200px;
-  height: 200px;
-  margin-right: 10px;
-  box-shadow: 2px 2px 2px rgb(170, 170, 170);
-}
-.myall .button-box .button2:hover {
-  box-shadow: 0px 0px 4px rgb(49, 49, 49);
-}
-.nomargin {
-  margin-bottom: 0;
-  margin-top: 0.8em;
-}
-
 #gotohome {
-  margin: 30px;
+  margin-top: 30px;
+  margin-left: 40px;
   display: flex;
   flex-direction: row;
 }
@@ -30,19 +8,16 @@
   padding: 40px;
   color: rgb(0, 156, 143);
 }
-#info {
-  margin-left: 50px;
-  text-align: left;
-  float: left;
+#blockparent {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  margin-top: 15px;
 }
-#info h4 {
-  color: black;
-  margin-top: 5px;
-  margin-bottom: 20px;
-}
-#info input {
-  margin-left: 20px;
-  height: 30px;
+#blockparent .block {
+  width: 350px;
+  height: 250px;
+  background-color: white;
+  border: 1px solid rgb(0, 156, 143);
+  margin-right: 20px;
 }
