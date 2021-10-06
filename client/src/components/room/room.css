@@ -116,7 +116,7 @@
   left: 27em;
 }
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
-#av {
+#button-box #av {
   color: #f6f6f6;
   background-color: #56537a;
   border: none;
@@ -125,7 +125,7 @@
   border-radius: 5px;
   margin-right: 1rem;
 }
-#av:hover {
+#button-box #av:hover {
   color: #f6f6f6;
   background-color: #9690d8;
   border: none;
