@@ -86,11 +86,6 @@ ul {
   flex-direction: column;
 }
 
-#chatBox {
-  flex: 0.9;
-  overflow: auto;
-}
-
 #sendBox {
   display: flex;
   flex: 0.1;
@@ -166,17 +161,17 @@ input {
   background-color: #f6fffa;
   margin-bottom: 0.8em;
 }
-.join-button{
+.join-button {
   background-color: rgb(102, 217, 190);
 }
 a {
   color: rgb(102, 217, 190);
 }
-.logo2{
+.logo2 {
   padding-bottom: 30px;
 }
 
 .meetingall {
   position: relative;
-  top: 120px
+  top: 120px;
 }

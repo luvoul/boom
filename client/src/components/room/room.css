@@ -23,19 +23,31 @@
 }
 .group-call .side #userList {
   width: 280px;
-  height: 80px;
+  height: 100px;
   background-color: #a2d4c9;
   border-radius: 8px;
-  overflow-y: scroll;
 }
 
-/* #sc {
+.group-call .side #userList #sc {
   overflow-y: scroll;
-  overflow-x: hidden;
-} */
+  height: 78px;
+}
+.group-call .side #userList #sc::-webkit-scrollbar {
+  width: 12.5px;
+}
+.group-call .side #userList #sc::-webkit-scrollbar-thumb {
+  background-color: #8bb6ad;
+  border-radius: 8px;
+}
+.group-call .side #userList #sc::-webkit-scrollbar-track {
+  background-color: #bcd4cf;
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 5px #c8e0db;
+}
 
 .group-call .side #userList #over {
   overflow: scroll;
+  width: 100px;
 }
 .group-call .side #userList li {
   font-size: small;
@@ -44,12 +56,28 @@
 }
 .group-call .side #messageChat {
   width: 270px;
-  height: 450px;
+  height: 540px;
   display: flex;
   background-color: #d7f0ea;
   border-radius: 8px;
   margin-top: 10px;
   padding: 5px;
+}
+.group-call .side #messageChat #chatBox {
+  flex: 0.9;
+  overflow: auto;
+}
+.group-call .side #messageChat #chatBox::-webkit-scrollbar {
+  width: 12.5px;
+}
+.group-call .side #messageChat #chatBox::-webkit-scrollbar-thumb {
+  background-color: #8bb6ad;
+  border-radius: 8px;
+}
+.group-call .side #messageChat #chatBox::-webkit-scrollbar-track {
+  background-color: #bcd4cf;
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 5px #c8e0db;
 }
 .group-call .side #messageChat #sendBox {
   display: flex;
